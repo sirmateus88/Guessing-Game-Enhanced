@@ -49,6 +49,10 @@
     border-radius: 100%;
     font-size: 60px;
   }
+
+  #players-input:focus {
+    outline: none;
+  }
   
   #submit {
     position: relative;
@@ -86,3 +90,13 @@
     height: 50%;
     margin: 50px auto;
   }
+
+  .highlighted {
+    display: inline;
+    border: 2px solid gold;
+    border-radius: 10%;
+    font-size: 70px;
+    color: gold;
+    padding: 0 25px;
+    background-color: rgba(55, 55, 55, 0.8);
+}

@@ -44,8 +44,8 @@ Game.prototype.isLower = function(){
 }
 
 Game.prototype.playersGuessSubmission = function(num){
-    if(num > 100 || num <= 0 || typeof num !== 'number'){
-        throw 'That is an invalid guess.';
+    if(num > 100 || num <= 0 || isNaN(num)){
+        return 'That is an invalid guess.';
     }
     this.playersGuess = num;
     return this.checkGuess();
@@ -57,9 +57,12 @@ Game.prototype.checkGuess = function(){
     var lower = this.isLower();
     if(this.playersGuess === this.winningNumber){
         $('#hint, #submit').prop("disabled",true);
-        $('#headers').find('h2').text('Press the Reset button to play again!');
+        $('#gameplay-subheader').text('Press the Reset button to play again!');
         $('#result').text('Winning Guess: ' + this.winningNumber);
         $('#result').slideDown();
+        this.pastGuesses.push(this.playersGuess);
+        $('#guess-list li:nth-child('+ this.pastGuesses.length +')').text(this.playersGuess);
+        $('#guess-list li:nth-child('+ this.pastGuesses.length +')').addClass('highlighted');
         return 'You Win!';
     } else if(this.pastGuesses.indexOf(this.playersGuess) !== -1){
         return 'You have already guessed that number.';
@@ -70,7 +73,7 @@ Game.prototype.checkGuess = function(){
     
     if (this.pastGuesses.length >= 5){
         $('#hint, #submit').prop("disabled",true);
-        $('#headers').find('h2').text('Press the Reset button to play again!');
+        $('#gameplay-subheader').text('Press the Reset button to play again!');
         $('#result').text('The winning number was: ' + this.winningNumber);
         $('#result').slideDown();
         return 'You Lose.';
@@ -137,6 +140,7 @@ $(document).ready(function() {
         $('#result').text('').slideUp();
         $('#guess-list li').text('-');
         $('#hint, #submit').prop("disabled",false);
+        $('.guess').removeClass('highlighted');
     });
     $('#hint-button').click(function(e){
         if(game.numOfHints == 0){
