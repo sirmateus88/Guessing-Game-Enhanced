@@ -129,7 +129,7 @@ $(document).ready(function() {
         $('#gameplay-header').text(makeAGuess(game));
     });
     $('#players-input').keypress(function(e){
-        if(e.which == 13){
+        if(e.which == 13 && game.pastGuesses.length < 5){
             $('#gameplay-header').text(makeAGuess(game));
         }
     });
