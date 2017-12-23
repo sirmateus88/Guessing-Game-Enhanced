@@ -88,6 +88,7 @@
     width: 60%;
     height: 50%;
     margin: 50px auto;
+    padding-bottom: 18px;
   }
 
   #intro{
@@ -96,6 +97,7 @@
     width: 60%;
     height: 50%;
     margin: 50px auto;
+    padding-bottom: 18px;
   }
 
   .highlighted {
