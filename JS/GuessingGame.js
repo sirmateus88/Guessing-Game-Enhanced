@@ -56,9 +56,9 @@ Game.prototype.checkGuess = function(){
     var difference = this.difference();
     var lower = this.isLower();
     if(this.playersGuess === this.winningNumber){
-        $('#hint, #submit').prop("disabled",true);
-        $('#gameplay-subheader').text('Press the Reset button to play again!');
-        $('#result').text('Winning Guess: ' + this.winningNumber);
+        $('#hint-button, #submit').prop("disabled",true);
+        $('#gameplay-subheader').text('Everyone in the city can finally take their earplugs out!');
+        $('#result').text('Press the Reset button to play again!');
         $('#result').slideDown();
         this.pastGuesses.push(this.playersGuess);
         $('#guess-list li:nth-child('+ this.pastGuesses.length +')').text(this.playersGuess);
@@ -72,9 +72,9 @@ Game.prototype.checkGuess = function(){
     $('#guess-list li:nth-child('+ this.pastGuesses.length +')').text(this.playersGuess);
     
     if (this.pastGuesses.length >= 5){
-        $('#hint, #submit').prop("disabled",true);
-        $('#gameplay-subheader').text('Press the Reset button to play again!');
-        $('#result').text('The winning number was: ' + this.winningNumber);
+        $('#hint-button, #submit').prop("disabled",true);
+        $('#gameplay-subheader').text('Everyone\'s thermostat is stuck just a little too cold now!');
+        $('#result').text('The winning number was: ' + this.winningNumber + '. Press the Reset button to play again!');
         $('#result').slideDown();
         return 'You Lose.';
     }
@@ -139,7 +139,7 @@ $(document).ready(function() {
         $('#gameplay-subheader').text('Guess a number between 1 and 100');
         $('#result').text('').slideUp();
         $('#guess-list li').text('-');
-        $('#hint, #submit').prop("disabled",false);
+        $('#hint-button, #submit').prop("disabled",false);
         $('.guess').removeClass('highlighted');
     });
     $('#hint-button').click(function(e){
