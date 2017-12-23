@@ -78,9 +78,9 @@ Game.prototype.checkGuess = function(){
 
 
     if(lower){
-        $('#headers').find('h2').text('Guess Lower');
+        $('#gameplay-subheader').text('Guess Lower');
     } else {
-        $('#headers').find('h2').text('Guess Higher')
+        $('#gameplay-subheader').text('Guess Higher')
     }
     
     if(difference < 10){
@@ -117,20 +117,26 @@ function makeAGuess(game){
 
 $(document).ready(function() {
     var game = new Game();
+    $('#ready').click(function(e){
+        $('#intro').fadeOut(400, function(){
+            $('#app').fadeIn(400);
+        });
+    });
     $('#submit').click(function(e){
-        $('#headers').find('h1').text(makeAGuess(game));
+        $('#gameplay-header').text(makeAGuess(game));
     });
     $('#players-input').keypress(function(e){
         if(e.which == 13){
-            $('#headers').find('h1').text(makeAGuess(game));
+            $('#gameplay-header').text(makeAGuess(game));
         }
     });
     $('#reset-button').click(function(e){
         game = new Game();
-        $('#headers').find('h1').text('Guessing Game');
-        $('#headers').find('h2').text('Guess a number between 1 and 100');
+        $('#gameplay-header').text('Guessing Game');
+        $('#gameplay-subheader').text('Guess a number between 1 and 100');
         $('#result').text('').slideUp();
         $('#guess-list li').text('-');
+        $('#hint, #submit').prop("disabled",false);
     });
     $('#hint-button').click(function(e){
         if(game.numOfHints == 0){

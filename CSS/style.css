@@ -66,12 +66,22 @@
   }
 
   body {
-    background-image: url('./../Images/IMG_7142.jpg');
-    background-size: cover;
+    background-color: black !important;
   }
 
+
   #app{
+    display: none;
     background-color: rgba(55, 55, 55, 0.8);
+    border-radius: 10%;
+    width: 60%;
+    height: 50%;
+    margin: 50px auto;
+  }
+
+  #intro{
+    background-color: rgba(55, 55, 55, 0.8);
+    border-radius: 10%;
     width: 60%;
     height: 50%;
     margin: 50px auto;
